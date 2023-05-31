@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if ($user = Auth::user()) {
+        //if login
+        return redirect('/dashboard/Admin');
+    } else {
+        //if not login
+        return redirect('login');
+    }
 });
+Auth::routes();
+Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard_aa');
+
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +36,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/managepayment/payment', function () {
+    return view('managepayment.payment');
+})->name('managepayment.payment');
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
