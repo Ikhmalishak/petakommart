@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     if ($user = Auth::user()) {
         //if login
         return redirect('/dashboard/Admin');
@@ -22,7 +23,7 @@ Route::get('/', function () {
         //if not login
         return redirect('login');
     }
-});
+});*/
 Auth::routes();
 Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard_aa');
 
@@ -36,12 +37,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-
-Route::get('/managepayment/payment', function () {
-    return view('managepayment.payment');
-})->name('managepayment.payment');
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//payment
+
+Route::get(
+    '/managepayment',
+    [PaymentController::class, 'addcart']
+
+)->name('payment.addcart'); //mesti akan jumpa route akan guna nama ni 
+
+
