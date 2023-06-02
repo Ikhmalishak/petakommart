@@ -15,17 +15,15 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-/*Route::get('/', function () {
-    if ($user = Auth::user()) {
-        //if login
-        return redirect('/dashboard/Admin');
-    } else {
-        //if not login
-        return redirect('login');
-    }
-});*/
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 Auth::routes();
-Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard_aa');
+// Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard_aa');
 
 
 Route::middleware([
@@ -34,18 +32,13 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('dashboard_aa');
     })->name('dashboard');
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//payment
+Route::get('/ManageSchedule', function () {
+    return view('ManageSchedule.AddSchedule');
+});
 
-Route::get(
-    '/managepayment',
-    [PaymentController::class, 'addcart']
-
-)->name('payment.addcart'); //mesti akan jumpa route akan guna nama ni 
-
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
