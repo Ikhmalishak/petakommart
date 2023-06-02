@@ -1,25 +1,54 @@
 @extends('layouts.sideNav')
 @section('content')
-<!-- Display success message if any -->
-@if (session('success'))
-    <div>{{ session('success') }}</div>
-@endif
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cashier Interface</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form {
+            width: 45%;
+        }
+        .cart {
+            width: 45%;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h2>Enter Item Information</h2>
+            <form action="{{ route('payments.addToCart') }}" method="post">
+                @csrf
 
-<!-- Item form -->
-<form action="{{ route('add-to-cart') }}" method="POST">
-    @csrf
-    <label for="purchase_item">Item Purchase:</label>
-    <input type="text" name="purchase_item" required>
-    <br>
+                <label for="item_id">Item ID:</label>
+                <input type="text" id="item_id" name="item_id" required>
 
-    <label for="price">Price:</label>
-    <input type="number" name="price" step="0.01" required>
-    <br>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" required>
 
-    <label for="quantity">Quantity:</label>
-    <input type="number" name="quantity" required>
-    <br>
-
-    <button type="submit">Add to Cart</button>
-</form>
+                <input type="submit" value="Add to Cart">
+            </form>
+        </div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <ul>
+                @foreach ($cartItems as $item)
+                    <li>Item ID: {{ $item['item_id'] }} - Quantity: {{ $item['quantity'] }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
 @endsection

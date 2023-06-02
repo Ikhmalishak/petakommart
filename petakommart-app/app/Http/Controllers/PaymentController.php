@@ -1,32 +1,45 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
+use App\Models\Payment;
 class PaymentController extends Controller
-{
 
-    public function addCart(Request $request)
+{
+    public function index()
     {
-        // Validate the item information
-        $validatedData = $request->validate([
-            'purchase_item' => 'required|string',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer|min:1',
+        $cartItems = session('cart', []);
+
+        return view('managepayment.index', compact('cartItems'));
+    }
+    public function addToCart(Request $request)
+    {
+        $itemId = $request->input('item_id');
+        $quantity = $request->input('quantity');
+    
+     /*   // Store in session
+        $cartItems = session('cart', []);
+        $cartItems[] = [
+            'item_id' => $itemId,
+            'quantity' => $quantity,
+        ];
+        session(['cart' => $cartItems]);
+    
+        // Store in database
+        $receipt = Receipt::create([
+            'customer_name' => 'John Doe', // Replace with the actual customer name
+            'total_amount' => 0, // Replace with the actual total amount
+        ]);
+    
+        $receiptItem = ReceiptItem::create([
+            'receipt_id' => $receipt->id,
+            'item_name' => 'Sample Item', // Replace with the actual item name
+            'quantity' => $quantity,
+            'price' => 0, // Replace with the actual item price
         ]);
 
-        // Add the item to the cart
-        // You can implement your own logic to handle the cart here
+        return redirect()->route('payments.index');
+    */}
+    
 
-        return redirect()->back()->with('success', 'Item added to cart!');
-    }
-
-    public function showCart()
-    {
-        // Fetch the cart items
-        // You can implement your own logic to fetch and display the cart here
-
-        return view('managepayment.index');
-    }
 }

@@ -22,5 +22,4 @@
 
     <button type="submit">Add to Cart</button>
 </form>
-
 @endsection
