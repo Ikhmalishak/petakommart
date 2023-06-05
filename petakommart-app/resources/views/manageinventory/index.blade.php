@@ -21,13 +21,13 @@
                         <td>{{ $item->amount }}</td>
                         <td>{{ $item->stock }}</td>
                         <td>
-                            <form action="{{route('inventorys.delete', $item->id)}}" method="POST">
+                            <form action="{{route('inventorys.delete', $item->itemID)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Delete blog</button>
                             </form>
                         </td>
-                        <td><a href="{{route('inventorys.edit', $item->id)}}">Edit</a></td>
+                        <td><a href="{{route('inventorys.edit', $item->itemID)}}">Edit</a></td>
                     </tr>
                 @endforeach
             </tbody>

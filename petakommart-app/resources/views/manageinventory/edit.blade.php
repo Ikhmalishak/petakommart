@@ -7,9 +7,9 @@
                     <div class="card-header">Add Inventory</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('inventorys.store') }}">
+                        <form  action="{{ route('inventorys.update', $item->id) }}" method="POST">
                             @csrf
-
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="product_name">Product Name</label>
                                 <input id="product_name" type="text" class="form-control" name="product_name" value="{{ $item->product_name }}" required>

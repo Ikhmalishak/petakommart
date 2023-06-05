@@ -79,7 +79,7 @@ public function edit($id)
     return view('manageinventory.edit', compact('item'));
 }
 
-public function update(Request $request, $id)
+public function update($id, request $request)
 {
     $validatedData = $request->validate([
         'product_name' => 'required',

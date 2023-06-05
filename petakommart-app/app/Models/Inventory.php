@@ -9,7 +9,7 @@ class Inventory extends Model
 {
     use HasFactory;
 
-    protected $table = 'inventory';
+    protected $primaryKey = 'itemID';
 
     protected $fillable = [
         'product_name',

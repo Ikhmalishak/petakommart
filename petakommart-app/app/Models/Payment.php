@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'purchase_item',
-        'total_purchase_per_item',
-        'total_purchase',
-        'purchase_date',
-        'purchase_time',
+        'item_name',
+        'quantity',
+        'price_per_item',
+        'total_price_per_item',
+        
     ];
 }

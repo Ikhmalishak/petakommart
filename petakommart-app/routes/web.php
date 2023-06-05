@@ -41,17 +41,12 @@ Route::get('/ManageSchedule', function () {
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//payment
 
+Route::get('/managepayment', [PaymentController::class, 'index'])->name('payments.index');
+Route::post('/managepayment/add-to-cart', [PaymentController::class, 'addToCart'])->name('payments.addToCart');
+Route::get('/managepayment/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
 
-Route::get(
-    '/managepayment', 
-    [PaymentController::class, 'index']
-)->name('payments.index');
-
-Route::post(
-    '/managepayment/add-to-cart', 
-    [PaymentController::class, 'addToCart']
-)->name('payments.addToCart');
 
 //inventory
 
