@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('payments', 
         function (Blueprint $table) 
         {
-        $table->increments('paymentID');
+        $table->id('paymentID');
         $table->string('item_name', 100)->nullable();
         $table->integer('quantity');
         $table->string('customer_name');

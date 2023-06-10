@@ -18,4 +18,9 @@ class Inventory extends Model
         'amount',
         'stock',
     ];
+
+    public function child()
+    {
+        return $this->hasMany(PaymentDetails::class,'itemID','itemID');
+    }
 }

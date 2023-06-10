@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\PaymentDetails;
 use App\Models\Inventory;
 
 class PaymentController extends Controller
@@ -51,25 +52,43 @@ class PaymentController extends Controller
         $totalPurchase = $this->calculateTotalPurchase($cartItems);
 
         // Store in database
-        $receipt = Payment::create([
-            'customer_name' => 'John Doe', // Replace with the actual customer name
+        $payment = Payment::create([
+            'customer_name' => 'Saim', // Replace with the actual customer name
             'total_amount' => $totalPurchase,
         ]);
 
+        //insert payment_details into table
         foreach ($cartItems as $item) {
-            $receipt->items()->create([
+            $paymentItem = new PaymentDetails([
                 'item_name' => $item['item_name'],
-                'quantity' => $item['quantity'],
-                'price' => $item['price_per_item'],
-                'total_price' => $item['total_price_per_item'],
+                'item_quantity' => $item['quantity'],
+                'item_price' => $item['price_per_item'],
+                'item_total_price' => $item['total_price_per_item'],
             ]);
+
+            
+
+
         }
+        $payment -> child() -> save($paymentItem);
+        
+
+        
+
+        // foreach ($cartItems as $item) {
+        //     $payment->items()->create([
+        //         'item_name' => $item['item_name'],
+        //         'item_quantity' => $item['quantity'],
+        //         'item_price' => $item['price_per_item'],
+        //         'item_total_price' => $item['total_price_per_item'],
+        //     ]);
+        // }
 
    
         // Clear the cart from session
         session(['cart' => []]);
 
-        return redirect()->route('payments.index')->withSuccess('Payment successful. Receipt created.');
+        return redirect()->route('payments.index')->withSuccess('Payment successful. payment created.');
     }
 
     private function calculateTotalPurchase($cartItems)
@@ -83,4 +102,5 @@ class PaymentController extends Controller
         return $totalPurchase;
     }
     
+
 }

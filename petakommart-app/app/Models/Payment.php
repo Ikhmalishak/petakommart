@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+    
 
     protected $fillable = [
-        'item_name',
-        'quantity',
-        'price_per_item',
-        'total_price_per_item',
+        'customer_name', 
+        'total_amount',
         
     ];
+
+    public function child()
+    {
+        return $this->hasMany(PaymentDetails::class,'paymentID','paymentID');
+    }
 }
