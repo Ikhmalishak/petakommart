@@ -51,8 +51,12 @@ Route::post('/ManageSchedule/create',
 Route::get('/ManageSchedule/{id}/edit',
  'App\Http\Controllers\ScheduleController@edit');
 
- Route::get('/ManageSchedule/{id}/update',
+ Route::post('/ManageSchedule/{id}/update',
  'App\Http\Controllers\ScheduleController@update');
+
+ //delete schedule
+ Route::get('/ManageSchedule/{id}/delete',
+ 'App\Http\Controllers\ScheduleController@delete');
 
  Route::get('/schedules/add', 'ScheduleController@addSchedule')->name('ManageSchedule.AddSchedule');
 

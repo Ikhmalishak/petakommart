@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('PcID')->uniqid()->default('1');
             $table->string('Schedtime');
             $table->date('SchedDate');
-            $table->string('SchedTotalDuty')->nullable();
+            $table->unsignedBigInteger('user_id')->default('1');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

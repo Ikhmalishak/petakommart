@@ -1,69 +1,60 @@
 @extends('layouts.sideNav')
 @section('content')
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/addSchedule.css')}}">
-<style>
-.container {
-  /* border: px outset red; */
-  background-color: #D8BFD8;    
-  text-align: left;
-}
-</style>
-</head>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/addSchedule.css') }}">
+        <style>
+            .container {
+                /* border: px outset red; */
+                background-color: #D8BFD8;
+                text-align: left;
+            }
+        </style>
+    </head>
 
 
 
-<div class="container">
-    <form action="/ManageSchedule/create" method="POST">
-        {{ csrf_field() }}
-        <label for= "Date"> Date:</label>
-        <input type="date" id="SchedDate" name="SchedDate"><br>
+    <div class="container1">
+        <form action="/ManageSchedule/create" method="POST">
+            {{ csrf_field() }}
+            <label for="Date"> Date:</label>
+            <input type="date" id="SchedDate" name="SchedDate"><br>
 
-        <label for= "Time"> Time:</label>
-        <select id="Schedtime" name="Schedtime">
-            <option value="8am-9am">8am-9am</option>
-            <option value="9am-10am">9am-10am</option>
-            <option value="10am-11am">10am-11am</option>
-            <option value="12pm-1pm">12pm-1pm</option>
-          </select>
-        
-          {{-- @foreach ($schedule as $item)
-              <p>$item</p>
-          @endforeach --}}
-        {{-- <table>
-            <tr>
-                <th>From</th>
-                <th>To</th>
-            </tr>
-            <tr>
-                <td>
-                    <input type="time" id="timeFrom" name="timeFrom">
-                </td>
-                <td>
-                    <input type="time" id="timeTo" name="timeTo">
-                </td>
-            </tr>
-        </table> --}}
-        
-        <br>
-        
-        <br>
+            <label for="Time"> Time:</label>
+            <select id="Schedtime" name="Schedtime">
+                <option value="8am-9am">8am-9am</option>
+                <option value="9am-10am">9am-10am</option>
+                <option value="10am-11am">10am-11am</option>
+                <option value="12pm-1pm">12pm-1pm</option>
+            </select>
 
-        <input type="submit" value="Add">
+            <br>
 
-        <br>
-        
-    </form>
+            <label for="Staff"> Staff:</label>
+            <select id="user_id" name="user_id">
+                @foreach ($data_user as $user)
+                    <option value="{{ $user->name }}">{{ $user->name }}</option>
+                @endforeach
 
-    {{-- @foreach ($data_schedule as $schedule)
+            </select>
+            <br>
+
+            <br>
+
+            <input type="submit" value="Add">
+
+            <br>
+
+        </form>
+
+        {{-- @foreach ($data_schedule as $schedule)
     <button type="button"><a href="/ManageSchedule/{{$data_schedule->id}}/edit"></a>Update</button>
     @endforeach --}}
-    
-    
-</div>
 
-{{-- @foreach ($collection as $item)
+
+    </div>
+
+    {{-- @foreach ($collection as $item)
     
 @endforeach
 <table>
@@ -85,37 +76,39 @@
     </tr>
 </table> --}}
 
-<br><br><br>
-<div class="container1">
-    <h1>Schedule Details</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Schedule ID</th>
-                <th>Schedule Date</th>
-                <th>Schedule Time</th>
-                <th>Total Schedule Duty</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($data_schedule as $sched)
+    <br><br><br>
+    <div class="container1">
+        <h1>Schedule Details</h1>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ $sched->id }}</td>
-                    <td>{{ $sched->SchedDate }}</td>
-                    <td>{{ $sched->Schedtime }}</td>
-                    <td>{{ $sched->SchedTotalDuty }}</td>
-                    <td>
-                        {{-- <form action="{{route('inventorys.delete', $item->id)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete blog</button>
-                        </form> --}}
-                    </td>
-                    {{-- <td><a href="{{route('ManageSchedule.UpdateorDelete', $data_schedule->id)}}">Edit</a></td> --}}
+                    <th>Schedule ID</th>
+                    <th>Schedule Date</th>
+                    <th>Schedule Time</th>
+                    <th>Total Schedule Duty</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-    <a href="{{ route('ManageSchedule.AddSchedule') }}">new schedule</a> 
-</div>
+            </thead>
+            <tbody>
+                @foreach ($data_schedule as $sched)
+                    <tr>
+                        <td>{{ $sched->id }}</td>
+                        <td>{{ $sched->SchedDate }}</td>
+                        <td>{{ $sched->Schedtime }}</td>
+                        @if ($sched->user_id == $user->id)
+                        <td>{{ $user->name }}</td>
+                        @else
+                        <td>{{ $user->name }}</td>
+                        @endif
+                        
+
+
+
+
+                        <td><a href="/ManageSchedule/{{ $sched->id }}/edit"><button
+                                    class="btn btn-primary">Edit</button></a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

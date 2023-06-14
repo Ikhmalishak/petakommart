@@ -20,29 +20,35 @@
 
         <label for= "Time"> Time:</label>
         <select id="Schedtime" name="Schedtime">
-            <option value="{{if ($data_schedule->Schedtime == '8am-9am') {
-                $data_schedule->Schedtime
-            } }}">8am-9am</option>
+            <option value="{{$data_schedule->Schedtime}}" hidden>{{$data_schedule->Schedtime}}</option>
+                <option value="8am-9am">8am-9am</option>
+                <option value="9am-10am">9am-10am</option>
+                <option value="10am-11am">10am-11am</option>
+                <option value="12pm-1pm">12pm-1pm</option>
 
-            <option value="{{$data_schedule->Schedtime == '9am-10am'{
-                $data_schedule->Schedtime
-            } }}">9am-10am</option>
-
-            <option value="{{$data_schedule->Schedtime == '10am-11am'{
-                $data_schedule->Schedtime
-            } }}">10am-11am</option>
-
-            <option value="{{$data_schedule->Schedtime == '12pm-1pm'{
-                $data_schedule->Schedtime
-            } }}">12pm-1pm</option>
+          </select>
+          
+          <br><br>
+          
+          <label for="Staff"> Staff:</label>
+          <select id="user_id" name="user_id">
+              @foreach ($data_user as $user)
+              <option value="{{$user->name}}">{{$user->name}}</option>
+              @endforeach
+              
           </select>
         
-        
         <br>
         
         <br>
 
-        <input type="submit" value="Add">
+        <div class="row">
+            <input type="submit" value="Update">
+        &nbsp;&nbsp;&nbsp;
+            <a href="/ManageSchedule/{{$data_schedule->id}}/delete"><input type="button" value="Delete" onclick="return confirm('Are You Sure?')"></a>
+    </div>
+        
+        
     </form>
 </div>
 @endsection
