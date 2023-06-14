@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_schedule', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->string('admin_id')->uniqid()->default('1');
+            $table->string('PcID')->uniqid()->default('1');
+            $table->string('Schedtime');
+            $table->date('SchedDate');
+            $table->string('SchedTotalDuty')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_schedule');
+        Schema::dropIfExists('schedules');
     }
 };

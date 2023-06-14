@@ -8,7 +8,7 @@
         <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
             <div class="main-navbar">
                 <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-                    <a class="navbar-brand w-100 mr-0" href="{{ route('dashboard_aa') }}" style="line-height: 25px;">
+                    <a class="navbar-brand w-100 mr-0" href="{{ route('dashboard') }}" style="line-height: 25px;">
                         <div class="d-table m-auto">
                             <img id="main-logo" class="d-inline-block align-center mr-1" style="max-width: 45px;" img src="{{ asset('images/petakom.jpg') }}" alt="Image">
                             <span class="d-none d-md-inline ml-1"> {{ config('app.name', 'Petakom') }}</span>
@@ -50,7 +50,7 @@
 
                     @if( auth()->user()->category== "Coordinator" || auth()->user()->category== "Hosd")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">checklist</i>
                             <span>View Activity</span>
                         </a>
@@ -59,26 +59,31 @@
 
                     @if( auth()->user()->category== "Committee" || auth()->user()->category== "Hosd")
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">calendar_month</i>
                             <span>Calendar</span>
                         </a>
                     </li>
                     @else 
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">calendar_month</i>
                             <span>Calendar</span>
                         </a>
                     </li>
                     @endif
 
-                    
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                            <i class="material-icons">calendar_month</i>
+                            <span>Schedule</span>
+                        </a>
+                    </li>
 
 
                     @if(auth()->user()->category== "Committee")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">text_snippet</i>
                             <span>Proposal</span>
                         </a>
@@ -87,7 +92,7 @@
 
                     @if(auth()->user()->category== "Coordinator" ||  auth()->user()->category== "Hosd" || auth()->user()->category== "Dean")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">text_snippet</i>
                             <span>Proposal</span>
                         </a>
@@ -126,7 +131,7 @@
                                 <span class="d-none d-md-inline-block">{{ Auth::user()->name }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-small">
-                                <a class="dropdown-item" href="{{ route('dashboard_aa', Auth::user()->id ) }}">
+                                <a class="dropdown-item" href="{{ route('dashboard', Auth::user()->id ) }}">
                                     <i class="material-icons">&#xE7FD;</i> Profile</a>
                                 <!-- <a class="dropdown-item" href="components-blog-posts.html">
                                     <i class="material-icons">vertical_split</i> Blog Posts</a>
@@ -181,7 +186,7 @@
 
             <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
                 <span class="copyright ml-auto my-auto mr-2">Copyright © {{ now()->year }}
-                    <a href="#" rel="nofollow">Apostrophe</a>
+                    <a href="#" rel="nofollow">titan tech</a>
                 </span>
             </footer>
 
