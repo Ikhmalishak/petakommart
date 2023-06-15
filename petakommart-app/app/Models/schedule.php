@@ -14,5 +14,6 @@ class schedule extends Model
         'Schedtime',
         'SchedDate',
         'SchedTotalDuty',
+        'Incharge'
     ];
 }

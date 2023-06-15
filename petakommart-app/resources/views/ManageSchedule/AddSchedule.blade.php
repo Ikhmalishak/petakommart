@@ -10,6 +10,13 @@
                 text-align: left;
             }
         </style>
+
+        <script>
+            function favTutorial() {
+                var mylist = document.getElementById("myList");
+                document.getElementById("favourite").value = mylist.options[mylist.selectedIndex].text;
+            }
+        </script>
     </head>
 
 
@@ -29,21 +36,20 @@
             </select>
 
             <br>
-
             <label for="Staff"> Staff:</label>
-            <select id="user_id" name="user_id">
+            <select id="myList" onchange="favTutorial()" name="Incharge">
+                <option hidden> ---Select Staff--- </option>
                 @foreach ($data_user as $user)
                     <option value="{{ $user->name }}">{{ $user->name }}</option>
                 @endforeach
+                <input type="text" id="favourite" size="20" name="Incharge" value="" hidden>
+                <br>
 
-            </select>
-            <br>
+                <br>
 
-            <br>
+                <input type="submit" value="Add">
 
-            <input type="submit" value="Add">
-
-            <br>
+                <br>
 
         </form>
 
@@ -94,12 +100,8 @@
                         <td>{{ $sched->id }}</td>
                         <td>{{ $sched->SchedDate }}</td>
                         <td>{{ $sched->Schedtime }}</td>
-                        @if ($sched->user_id == $user->id)
-                        <td>{{ $user->name }}</td>
-                        @else
-                        <td>{{ $user->name }}</td>
-                        @endif
-                        
+                        <td>{{ $sched->Incharge }}</td>
+
 
 
 

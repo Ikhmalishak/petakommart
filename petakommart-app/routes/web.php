@@ -37,7 +37,7 @@ Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'lo
 
 
 Route::get('/ManageSchedule', function () {
-    return view('ManageSchedule.AddSchedule');
+    return view('ManageSchedule.AddSchedule')->name('manageSchedule');
 });
 
 Route::get('/ManageSchedule',
