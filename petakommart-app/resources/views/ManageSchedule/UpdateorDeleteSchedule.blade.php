@@ -9,10 +9,45 @@
                 background-color: #D8BFD8;
                 text-align: left;
             }
+
+            .shadow-box {
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+                padding: 20px;
+                background-color: #fff;
+            }
+
+            .blue-button {
+                background-color: #4C62F6;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 4px;
+                border: 1px solid blue;
+                /* Add border style */
+                cursor: pointer;
+            }
+
+            .delete-button {
+                background-color: white;
+                /* color: white; */
+                padding: 5px 10px;
+                border-radius: 4px;
+                border: 1px solid black;
+                /* Add border style */
+                cursor: pointer;
+            }
         </style>
+        <script>
+            function favTutorial() {
+                var mylist = document.getElementById("myList");
+                document.getElementById("favourite").value = mylist.options[mylist.selectedIndex].text;
+            }
+        </script>
     </head>
 
-    <div class="container">
+    <div class="shadow-box">
+        <h1>Update Schedule</h1>
+        <br>
         <form action="/ManageSchedule/{{ $data_schedule->id }}/update" method="POST">
             {{ csrf_field() }}
             <label for="Date"> Date:</label>
@@ -25,9 +60,16 @@
                 <option value="9am-10am">9am-10am</option>
                 <option value="10am-11am">10am-11am</option>
                 <option value="12pm-1pm">12pm-1pm</option>
-
             </select>
 
+            <br><br>
+
+            <label for="PETAKOM Committee"> PETAKOM Committee:</label>
+            <select id="myList" onchange="favTutorial()" name="Incharge">
+                <option value="{{ $data_schedule->Incharge }}">{{ $data_schedule->Incharge }}</option>
+                <input type="text" id="favourite" size="20" name="Incharge" value="{{ $data_schedule->Incharge }}"
+                    hidden>
+            </select>
             <br>
 
             {{-- <label for="Staff"> Staff:</label>
@@ -43,10 +85,10 @@
             <br>
 
             <div class="row">
-                <input type="submit" value="Update">
+                <input type="submit" value="Update" class="blue-button">
                 &nbsp;&nbsp;&nbsp;
                 <a href="/ManageSchedule/{{ $data_schedule->id }}/delete"><input type="button" value="Delete"
-                        onclick="return confirm('Are You Sure?')"></a>
+                        class="delete-button" onclick="return confirm('Are You Sure?')"></a>
             </div>
 
 

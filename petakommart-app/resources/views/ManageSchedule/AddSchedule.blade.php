@@ -9,6 +9,24 @@
                 background-color: #D8BFD8;
                 text-align: left;
             }
+
+           
+            .shadow-box {
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    border-radius: 4px;
+                    padding: 20px;
+                    background-color: #fff;
+            }
+
+            .add-button {
+                background-color: #4C62F6;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 4px;
+                border: 1px solid black;
+                /* Add border style */
+                cursor: pointer;
+            }
         </style>
 
         <script>
@@ -21,7 +39,9 @@
 
 
 
-    <div class="container1">
+    <div class="shadow-box">
+        <h1>Add Schedule</h1>
+        <br>
         <form action="/ManageSchedule/create" method="POST">
             {{ csrf_field() }}
             <label for="Date"> Date:</label>
@@ -36,9 +56,9 @@
             </select>
 
             <br>
-            <label for="Staff"> Staff:</label>
+            <label for="PETAKOM Committee"> PETAKOM Committee:</label>
             <select id="myList" onchange="favTutorial()" name="Incharge">
-                <option hidden> ---Select Staff--- </option>
+                <option hidden> ---Select PETAKOM Committee--- </option>
                 @foreach ($data_user as $user)
                     <option value="{{ $user->name }}">{{ $user->name }}</option>
                 @endforeach
@@ -47,7 +67,7 @@
 
                 <br>
 
-                <input type="submit" value="Add">
+                <input type="submit" value="Add" class="add-button">
 
                 <br>
 
@@ -83,7 +103,7 @@
 </table> --}}
 
     <br><br><br>
-    <div class="container1">
+    <div class="shadow-box">
         <h1>Schedule Details</h1>
         <table class="table">
             <thead>

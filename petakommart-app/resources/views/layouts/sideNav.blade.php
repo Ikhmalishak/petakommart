@@ -115,7 +115,7 @@
                     <div class="row mt-auto mb-auto ml-3 " style="width: auto;">
 
                         <div class="d-md-flex mt-auto mb-auto mr-md-4 d-none" style="width: auto">
-                            <span class="stats-small__label text-uppercase">&nbsp; Account type : {{Auth::user()->category}}</span>
+                            <span class="stats-small__label text-uppercase">&nbsp; Account type : Admin {{Auth::user()->category}}</span>
 
                         </div>
 
