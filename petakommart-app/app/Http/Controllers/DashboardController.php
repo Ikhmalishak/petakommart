@@ -23,4 +23,14 @@ class DashboardController extends Controller
         }
         
     }
+
+    public function create() //create =method 
+    {
+        //
+        //$blogs = Blog::get(); //Select * FROM users, guna model User untuk access database
+      
+        return view('blogs.create');//tambah return untuk display data 
+        //compact('blogs'), //send data daripada declare ($) kepada index.blade (compact), mesti sama nama dengan $
+    //); 
+    }
 }

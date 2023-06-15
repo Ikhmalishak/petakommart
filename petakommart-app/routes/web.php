@@ -37,9 +37,31 @@ Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'lo
 
 
 Route::get('/ManageSchedule', function () {
-    return view('ManageSchedule.AddSchedule');
+    return view('ManageSchedule.AddSchedule')->name('manageSchedule');
 });
 
+Route::get('/ManageSchedule',
+ 'App\Http\Controllers\ScheduleController@index');
+
+//add schedule
+Route::post('/ManageSchedule/create',
+'App\Http\Controllers\ScheduleController@create');
+
+//edit schedule and delete schedule
+Route::get('/ManageSchedule/{id}/edit',
+ 'App\Http\Controllers\ScheduleController@edit');
+
+ Route::post('/ManageSchedule/{id}/update',
+ 'App\Http\Controllers\ScheduleController@update');
+
+ //delete schedule
+ Route::get('/ManageSchedule/{id}/delete',
+ 'App\Http\Controllers\ScheduleController@delete');
+
+ Route::get('/schedules/add', 'ScheduleController@addSchedule')->name('ManageSchedule.AddSchedule');
+
+//  Route::get('/ManageSchedule',
+//  'App\Http\Controllers\ScheduleController@view');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //payment
 

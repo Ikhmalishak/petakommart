@@ -50,7 +50,7 @@
 
                     @if( auth()->user()->category== "Coordinator" || auth()->user()->category== "Hosd")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">checklist</i>
                             <span>View Activity</span>
                         </a>
@@ -59,7 +59,7 @@
 
                     @if( auth()->user()->category== "Committee" || auth()->user()->category== "Hosd")
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">calendar_month</i>
                             <span>Calendar</span>
                         </a>
@@ -73,12 +73,17 @@
                     </li>
                     @endif
 
-                    
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                            <i class="material-icons">calendar_month</i>
+                            <span>Schedule</span>
+                        </a>
+                    </li>
 
 
                     @if(auth()->user()->category== "Committee")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">text_snippet</i>
                             <span>Proposal</span>
                         </a>
@@ -87,7 +92,7 @@
 
                     @if(auth()->user()->category== "Coordinator" ||  auth()->user()->category== "Hosd" || auth()->user()->category== "Dean")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">text_snippet</i>
                             <span>Proposal</span>
                         </a>
@@ -110,7 +115,7 @@
                     <div class="row mt-auto mb-auto ml-3 " style="width: auto;">
 
                         <div class="d-md-flex mt-auto mb-auto mr-md-4 d-none" style="width: auto">
-                            <span class="stats-small__label text-uppercase">&nbsp; Account type : {{Auth::user()->category}}</span>
+                            <span class="stats-small__label text-uppercase">&nbsp; Account type : Admin {{Auth::user()->category}}</span>
 
                         </div>
 
@@ -181,7 +186,7 @@
 
             <footer class="main-footer d-flex p-2 px-3 bg-white border-top">
                 <span class="copyright ml-auto my-auto mr-2">Copyright © {{ now()->year }}
-                    <a href="#" rel="nofollow">Apostrophe</a>
+                    <a href="#" rel="nofollow">titan tech</a>
                 </span>
             </footer>
 
