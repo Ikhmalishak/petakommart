@@ -39,25 +39,25 @@
                     </li>
 
                     <!-- GROUP SEP START -->
-                    @if( auth()->user()->category== "Admin" || auth()->user()->category== "Lecturer" || auth()->user()->category== "Committee")
+                    @if( auth()->user()->category== "Admin")
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('activity*') ? 'active' : '' }}" href="{{ route('activity') }}">
+                        <a class="nav-link {{ request()->routeIs('inventorys*') ? 'active' : '' }}" href="{{ route('inventorys') }}">
                             <i class="material-icons">checklist</i>
-                            <span>Activity</span>
+                            <span>Inventory</span>
                         </a>
                     </li>
                     @endif
 
-                    @if( auth()->user()->category== "Coordinator" || auth()->user()->category== "Hosd")
+                    @if( auth()->user()->category== "Cashier")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('inventorys,edit') }}">
                             <i class="material-icons">checklist</i>
                             <span>View Activity</span>
                         </a>
                     </li>
                     @endif
 
-                    @if( auth()->user()->category== "Committee" || auth()->user()->category== "Hosd")
+                    <!-- @if( auth()->user()->category== "Committee" || auth()->user()->category== "Hosd")
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">calendar_month</i>
@@ -97,7 +97,7 @@
                             <span>Proposal</span>
                         </a>
                     </li>
-                    @endif
+                    @endif -->
                     <!-- GROUP SEP END -->
 
                 </ul>

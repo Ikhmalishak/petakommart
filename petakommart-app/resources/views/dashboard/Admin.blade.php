@@ -1,1 +1,4 @@
-ini admin
+@extends('layouts.sideNav')
+@section('content')
+
+@endsection

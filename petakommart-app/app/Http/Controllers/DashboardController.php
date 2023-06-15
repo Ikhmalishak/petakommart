@@ -18,10 +18,13 @@ class DashboardController extends Controller
     {
         $category = Auth::user()->category;
 
-        if ($category == 'admin') {
+        if ($category == 'Admin') {
+            return view('dashboard.Admin');
+        }
+
+        if ($category == 'user') {
             return view('dashboard.Student');
         }
-        
     }
 
     public function create() //create =method 

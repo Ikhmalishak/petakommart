@@ -7,7 +7,7 @@
                     <div class="card-header">Add Inventory</div>
 
                     <div class="card-body">
-                        <form  action="{{ route('inventorys.update', $item->id) }}" method="POST">
+                        <form  action="{{ route('inventorys.update', $item->itemID) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
