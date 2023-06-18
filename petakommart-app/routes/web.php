@@ -86,7 +86,7 @@ Route::get(
     '/manageinventory/create',
     [InventoryController::class, 'create']
 
-)->name('inventorys.create'); //mesti akan jumpa route akan guna nama ni 
+)->name('inventorys.create'); //mesti akan jumpa route akan guna nama ni
 
 //store blog user
 Route::post(//pakai method post sebab form pakai post
@@ -113,3 +113,28 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Homepage Sales Report
+Route::get('/Home', function () {
+    return view('Homepage');
+});
+
+//Homepage Sales Report
+Route::get('/Home2', function () {
+    return view('PetakomSalesReport');
+});
+
+//add, delete, create, update sales report
+Route::get('/salesReport','App\Http\Controllers\salesreportsController@index')->name('ManageSalesReport.ADMIN.ViewSalesReportPage');
+Route::get('/salesReport/create', 'App\Http\Controllers\salesreportsController@create')->name('ManageSalesReport.ADMIN.AddSalesReportPage');
+Route::get('/salesReport/{id}/edit', 'App\Http\Controllers\salesreportsController@edit');
+Route::post('/salesReport/{id}/update', 'App\Http\Controllers\salesreportsController@update');
+Route::post('/salesReport', 'App\Http\Controllers\salesreportsController@store')->name('salesReport.store');
+Route::delete('/salesReport/{id}', 'App\Http\Controllers\salesreportsController@destroy')->name('salesReport.destroy');
+
+
+
+Route::get('/Petakom', function () {
+    return view('ManageSalesReport.PETAKOM_Coordinator.ViewSalesReportPage');
+
+});
