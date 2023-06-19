@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\salesreportsController;
 
 /*
 |--------------------------------------------------------------------------
