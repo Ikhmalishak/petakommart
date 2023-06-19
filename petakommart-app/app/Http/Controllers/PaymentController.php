@@ -53,7 +53,7 @@ class PaymentController extends Controller
         $customerName = $request->input('customer_name');
         // Store in database
         $receipt = Payment::create([
-            'customer_name' => $customerName, // Replace with the actual customer name
+            'customer_name' => 'ikhmal',// Replace with the actual customer name
             'total_amount' => $totalPurchase,
         ]);
 
@@ -74,6 +74,7 @@ class PaymentController extends Controller
         //         'total_price' => $item['total_price_per_item'],
         //     ]);
         // }
+        session()->forget('cart');
           // Redirect back to the previous page
     return redirect()->back();
     // return redirect()->route('payments.report', ['paymentID' => $receipt->id]);

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,14 +50,14 @@ Route::delete('/users/{id}/delete',[ProfileController::class, 'delete'])->name('
 // Route::get('/profile/{id}', [App\Http\Controllers\profileController::class, 'edit'])->name('profile');
 // Route::get('/editProfile/{id}', [App\Http\Controllers\profileController::class, 'update']);
 
-
 //schedule
-Route::get('/ManageSchedule',
- 'App\Http\Controllers\ScheduleController@index');
- 
 Route::get('/ManageSchedule', function () {
     return view('ManageSchedule.AddSchedule')->name('manageSchedule');
 });
+
+Route::get('/ManageSchedule',
+ 'App\Http\Controllers\ScheduleController@index')-> name('schedules');
+
 //add schedule
 Route::post('/ManageSchedule/create',
 'App\Http\Controllers\ScheduleController@create');

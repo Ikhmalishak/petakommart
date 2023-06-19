@@ -66,6 +66,16 @@
                     </li>
                     @endif
 
+                    @if( auth()->user()->category== "Admin")
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('schedules*') ? 'active' : '' }}" href="{{ route('schedules') }}">
+                            <i class="material-icons">checklist</i>
+                            <span>Schedule</span>
+                        </a>
+                    </li>
+                    @endif
+
+
                     <!-- @if( auth()->user()->category== "Admin")
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
