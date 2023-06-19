@@ -24,16 +24,16 @@
                      <form action="{{route('users.delete', $user->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Delete</button>
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </form>
                      </td>
-                     <td><a href="{{route('users.edit', $user->id)}}">Edit</a></td>
+                     <td><a href="{{route('users.edit', $user->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>
 <tr>
 
-        <td><a href = "{{route('users.create')}}">new user </a></td>
+        <td><a href = "{{route('users.create') }}" class="btn btn-success">Add New User</a></td>
         </tr>  </table>
         
     </div>

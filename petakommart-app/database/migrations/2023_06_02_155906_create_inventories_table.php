@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inventories', function (Blueprint $table) {
+            $table->string('productcode');
             $table->increments('itemID');
             $table->string('product_name');
             $table->integer('quantity');

@@ -27,6 +27,7 @@ class InventoryController extends Controller
     {
         //validate syarat untuk input macam ic kena masuk nombor
         $validator = Validator::make($request->all(), [
+            'productcode' => 'required',
             'product_name' => 'required',
             'quantity' => 'required',
             'price' => 'required',
@@ -55,6 +56,7 @@ public function edit($id)
 public function update($id, request $request)
 {
     $validatedData = $request->validate([
+        'productcode' => 'required',
         'product_name' => 'required',
         'quantity' => 'required',
         'price' => 'required',
