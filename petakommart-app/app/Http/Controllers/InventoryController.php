@@ -45,34 +45,7 @@ class InventoryController extends Controller
         // Redirect to the desired page
         return redirect()->route('inventorys');
     }
-/*
-    //edit blog
-    function edit($id)
-    {
-        //cari guna id lepastu send
-        $item = Inventory::find($id);
-        return view(
-            'manageinventory.edit',
-            compact("item"),
-        );
-    }
 
-    //process edit
-    function update($id, request $request)
-    {
-        $item = Inventory::find($id);
-        //insert data to database
-        $item->update([
-            //key guna nama dalam db -> $request->title (nama dalam form)
-            "product_name" => $request->product_name,
-            "quantity" => $request->quantity,
-            "price" => $request->price,
-            "amount" => $request->amount,
-            "stock" => $request->stock,
-        ]);
-        return redirect()->route('inventorys');
-    }
-*/
 public function edit($id)
 {
     $item = Inventory::find($id);

@@ -50,14 +50,23 @@
 
                     @if( auth()->user()->category== "Cashier")
                     <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('inventorys,edit') }}">
+                    <a class="nav-link {{ request()->routeIs('inventorys.edit*') ? 'active' : '' }}" href="{{ route('inventorys.edit') }}">
                             <i class="material-icons">checklist</i>
                             <span>View Activity</span>
                         </a>
                     </li>
                     @endif
 
-                    <!-- @if( auth()->user()->category== "Committee" || auth()->user()->category== "Hosd")
+                    @if( auth()->user()->category== "Admin")
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('users*') ? 'active' : '' }}" href="{{ route('users') }}">
+                            <i class="material-icons">checklist</i>
+                            <span>User List</span>
+                        </a>
+                    </li>
+                    @endif
+
+                    <!-- @if( auth()->user()->category== "Admin")
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                             <i class="material-icons">calendar_month</i>
@@ -71,9 +80,9 @@
                             <span>Calendar</span>
                         </a>
                     </li>
-                    @endif
+                    @endif -->
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
                             <i class="material-icons">calendar_month</i>
                             <span>Schedule</span>
@@ -98,7 +107,7 @@
                         </a>
                     </li>
                     @endif -->
-                    <!-- GROUP SEP END -->
+                    <!-- GROUP SEP END-->
 
                 </ul>
 
@@ -115,7 +124,7 @@
                     <div class="row mt-auto mb-auto ml-3 " style="width: auto;">
 
                         <div class="d-md-flex mt-auto mb-auto mr-md-4 d-none" style="width: auto">
-                            <span class="stats-small__label text-uppercase">&nbsp; Account type : Admin {{Auth::user()->category}}</span>
+                            <span class="stats-small__label text-uppercase">&nbsp; Account type : {{Auth::user()->category}}</span>
 
                         </div>
 
@@ -131,7 +140,7 @@
                                 <span class="d-none d-md-inline-block">{{ Auth::user()->name }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-small">
-                                <a class="dropdown-item" href="{{ route('dashboard_aa', Auth::user()->id ) }}">
+                                
                                     <i class="material-icons">&#xE7FD;</i> Profile</a>
                                 <!-- <a class="dropdown-item" href="components-blog-posts.html">
                                     <i class="material-icons">vertical_split</i> Blog Posts</a>

@@ -24,7 +24,7 @@
                             <form action="{{route('inventorys.delete', $item->itemID)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Delete blog</button>
+                                <button type="submit">Delete</button>
                             </form>
                         </td>
                         <td><a href="{{route('inventorys.edit', $item->itemID)}}">Edit</a></td>

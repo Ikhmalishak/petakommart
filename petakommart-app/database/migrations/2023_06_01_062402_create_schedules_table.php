@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('_schedule', function (Blueprint $table) {
             $table->id();
             $table->string('admin_id')->uniqid()->default('1');
             $table->string('PcID')->uniqid()->default('1');

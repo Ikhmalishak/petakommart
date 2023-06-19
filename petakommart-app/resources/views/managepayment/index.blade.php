@@ -35,6 +35,10 @@
                         <form action="{{ route('payments.addToCart') }}" method="POST">
                             @csrf
                             <div class="form-group">
+                                <label for="item_id">Customer Name</label>
+                                <input type="text" name="customer_name" id="customer_name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="item_id">Item ID</label>
                                 <input type="text" name="item_id" id="item_id" class="form-control" required>
                             </div>
@@ -65,11 +69,12 @@
                                 @foreach ($cartItems as $item)
                                     <tr>
                                         <td>{{ $item['item_name'] }}</td>
-                                        <td>{{ $item['quantity'] }}</td>
+                                        <td>{{ $item['quantity'] }}</td> 
                                         <td>{{ $item['price_per_item'] }}</td>
                                         <td>{{ $item['total_price_per_item'] }}</td>
                                     </tr>
                                 @endforeach
+                                
                             </tbody>
                         </table>
                         <div class="text-right">

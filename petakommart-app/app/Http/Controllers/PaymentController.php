@@ -20,7 +20,7 @@ class PaymentController extends Controller
     {
         $itemId = $request->input('item_id');
         $quantity = $request->input('quantity');
-
+        $customerName = $request->input('customer_name');
         // Fetch item from the database
         $item = Inventory::find($itemId);
 
@@ -39,39 +39,47 @@ class PaymentController extends Controller
             'quantity' => $quantity,
             'price_per_item' => $item->price,
             'total_price_per_item' => $totalPricePerItem,
+            'customer_name' => $customerName
         ];
         session(['cart' => $cartItems]);
 
         return redirect()->route('payments.index');
     }
 
-     public function checkout()
+    public function checkout(Request $request)
     {
         $cartItems = session('cart', []);
         $totalPurchase = $this->calculateTotalPurchase($cartItems);
-
+        $customerName = $request->input('customer_name');
         // Store in database
         $receipt = Payment::create([
-            'customer_name' => 'John Doe', // Replace with the actual customer name
+            'customer_name' => $customerName, // Replace with the actual customer name
             'total_amount' => $totalPurchase,
         ]);
 
         foreach ($cartItems as $item) {
-            $receipt->items()->create([
-                'item_name' => $item['item_name'],
-                'quantity' => $item['quantity'],
-                'price' => $item['price_per_item'],
-                'total_price' => $item['total_price_per_item'],
-            ]);
+            // Deduct the purchased quantity from the inventory
+            $inventoryItem = Inventory::find($item['item_id']);
+            if ($inventoryItem) {
+                $inventoryItem->quantity -= $item['quantity'];
+                $inventoryItem->save();
+            }
+
         }
-
-   
-        // Clear the cart from session
-        session(['cart' => []]);
-
-        return redirect()->route('payments.index')->withSuccess('Payment successful. Receipt created.');
+        // foreach ($cartItems as $item) {
+        //     $receipt->items()->create([
+        //         'item_name' => $item['item_name'],
+        //         'quantity' => $item['quantity'],
+        //         'price' => $item['price_per_item'],
+        //         'total_price' => $item['total_price_per_item'],
+        //     ]);
+        // }
+          // Redirect back to the previous page
+    return redirect()->back();
+    // return redirect()->route('payments.report', ['paymentID' => $receipt->id]);
     }
 
+    
     private function calculateTotalPurchase($cartItems)
     {
         $totalPurchase = 0;
@@ -82,5 +90,4 @@ class PaymentController extends Controller
 
         return $totalPurchase;
     }
-    
 }

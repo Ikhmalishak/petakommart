@@ -11,9 +11,11 @@ class Payment extends Model
 
     protected $fillable = [
         'item_name',
-        'quantity',
-        'price_per_item',
-        'total_price_per_item',
-        
+        'customer_name',
+        'total_amount',
     ];
+    public function items()
+    {
+        return $this->hasMany(Inventory::class);
+    }
 }

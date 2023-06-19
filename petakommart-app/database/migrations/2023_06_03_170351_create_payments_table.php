@@ -17,7 +17,7 @@ return new class extends Migration
         $table->increments('paymentID');
         $table->string('item_name', 100)->nullable();
         $table->integer('quantity');
-        $table->string('customer_name');
+        $table->string('customer_name')->default('');
         $table->string('total_amount');
         $table->timestamp('created_at')->nullable();
         $table->timestamp('updated_at')->nullable();

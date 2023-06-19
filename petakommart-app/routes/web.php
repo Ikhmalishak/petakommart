@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +38,25 @@ Auth::routes();
 Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard_aa');
 
 
+
+//profile
+Route::get('/manageuser',[ProfileController::class, 'index'])->name('users');
+Route::get('/manageuser/create',[ProfileController::class, 'create'])->name('users.create');
+Route::post('/manageuser/store',[ProfileController::class, 'store'])->name('users.store');
+Route::get('/users/{id}/edit', [ProfileController::class, 'edit'])->name('users.edit');
+Route::put('/users/{id}/update', [ProfileController::class, 'update'])->name('users.update');;
+Route::delete('/users/{id}/delete',[ProfileController::class, 'delete'])->name('users.delete'); 
+// Route::get('/profile/{id}', [App\Http\Controllers\profileController::class, 'edit'])->name('profile');
+// Route::get('/editProfile/{id}', [App\Http\Controllers\profileController::class, 'update']);
+
+
+//schedule
+Route::get('/ManageSchedule',
+ 'App\Http\Controllers\ScheduleController@index');
+ 
 Route::get('/ManageSchedule', function () {
     return view('ManageSchedule.AddSchedule')->name('manageSchedule');
 });
-
-Route::get('/ManageSchedule',
- 'App\Http\Controllers\ScheduleController@index');
-
 //add schedule
 Route::post('/ManageSchedule/create',
 'App\Http\Controllers\ScheduleController@create');
@@ -61,15 +74,12 @@ Route::get('/ManageSchedule/{id}/edit',
 
  Route::get('/schedules/add', 'ScheduleController@addSchedule')->name('ManageSchedule.AddSchedule');
 
-//  Route::get('/ManageSchedule',
-//  'App\Http\Controllers\ScheduleController@view');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //payment
 
 Route::get('/managepayment', [PaymentController::class, 'index'])->name('payments.index');
 Route::post('/managepayment/add-to-cart', [PaymentController::class, 'addToCart'])->name('payments.addToCart');
 Route::get('/managepayment/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
-
+Route::get('managepayment/receipt/{paymentId}', [PaymentController::class, 'showReceipt'])->name('payments.report');
 
 //inventory
 
@@ -108,8 +118,4 @@ Route::delete(//pakai method pdelete sebab form pakai dekat edit.blade delete
 
 )->name('inventorys.delete'); //mesti akan jumpa route akan guna nama ni
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
