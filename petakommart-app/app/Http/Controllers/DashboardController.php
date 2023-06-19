@@ -22,8 +22,8 @@ class DashboardController extends Controller
             return view('dashboard.Admin');
         }
 
-        if ($category == 'user') {
-            return view('dashboard.Student');
+        if ($category == 'Cashier') {
+            return view('dashboard.Cashier');
         }
     }
 

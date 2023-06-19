@@ -44,10 +44,10 @@ class LoginController extends Controller
 
         if ($category == 'Admin') {
             return redirect()->route('dashboard.Admin');
-        } elseif ($category == 'user') {
-            return redirect()->route('dashboard.Student');
+        } elseif ($category == 'Cashier') {
+            return redirect()->route('dashboard.Cashier');
         } else {
-            return redirect('/dashboard');
+            return redirect('/dashboard.Cashier');
         }
     }
 }

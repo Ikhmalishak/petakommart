@@ -34,10 +34,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard');
     Route::get('/dashboard/admin', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard.Admin');
+    Route::get('/dashboard/Cashier', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard.Cashier');
 });
 Auth::routes();
-Route::get('dashboard_aa', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard_aa');
-
 
 
 //profile
@@ -81,7 +80,8 @@ Route::get('/managepayment', [PaymentController::class, 'index'])->name('payment
 Route::post('/managepayment/add-to-cart', [PaymentController::class, 'addToCart'])->name('payments.addToCart');
 Route::get('/managepayment/checkout', [PaymentController::class, 'checkout'])->name('payments.checkout');
 Route::get('managepayment/receipt/{paymentId}', [PaymentController::class, 'showReceipt'])->name('payments.report');
-
+Route::get('managepayment/qr', [PaymentController::class, 'qr'])->name('payments.qr');
+Route::get('managepayment/cash', [PaymentController::class, 'cash'])->name('payments.cash');
 //inventory
 
 Auth::routes();
@@ -131,13 +131,6 @@ Route::get('/Home2', function () {
     return view('PetakomSalesReport');
 });
 
-//add, delete, create, update sales report
-Route::get('/salesReport','App\Http\Controllers\salesreportsController@index')->name('ManageSalesReport.ADMIN.ViewSalesReportPage');
-Route::get('/salesReport/create', 'App\Http\Controllers\salesreportsController@create')->name('ManageSalesReport.ADMIN.AddSalesReportPage');
-Route::get('/salesReport/{id}/edit', 'App\Http\Controllers\salesreportsController@edit');
-Route::post('/salesReport/{id}/update', 'App\Http\Controllers\salesreportsController@update');
-Route::post('/salesReport', 'App\Http\Controllers\salesreportsController@store')->name('salesReport.store');
-Route::delete('/salesReport/{id}', 'App\Http\Controllers\salesreportsController@destroy')->name('salesReport.destroy');
 
 
 

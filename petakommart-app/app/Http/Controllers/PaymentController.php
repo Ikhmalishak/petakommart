@@ -76,10 +76,11 @@ class PaymentController extends Controller
         // }
         session()->forget('cart');
           // Redirect back to the previous page
-    return redirect()->back();
+          return view('managepayment.checkout', compact('cartItems', 'totalPurchase', 'customerName'));
     // return redirect()->route('payments.report', ['paymentID' => $receipt->id]);
     }
 
+<<<<<<< Updated upstream
     public function generateReport()
     {
         $report = Payment::select(Payment::raw('DATE(created_at) as day'), DB::raw('SUM(total_amount) as total'))
@@ -90,6 +91,20 @@ class PaymentController extends Controller
         return view('payment.report', compact('report'));
     }
 
+=======
+    public function qr()
+{
+    return view('managepayment.qr');
+}
+public function cash(Request $request)
+{
+    $totalPurchase = $request->input('totalPurchase');
+
+    // Other code for the cash interface and change calculation
+
+    return view('managepayment.cash', compact('totalPurchase'));
+}
+>>>>>>> Stashed changes
     private function calculateTotalPurchase($cartItems)
     {
         $totalPurchase = 0;

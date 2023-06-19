@@ -25,7 +25,7 @@
 
     <a class="navbar-brand" href="#" style="font-weight: bold; color: red;">PETAKOM MART MANAGEMENT SYSTEM</a>
     <button type="button" class="btn"></button>
-
+    
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
     <img height="20%" width="100%" src="{{ asset('Gambaq/petakom-logo.png') }}" alt="My Image">
       <div class="offcanvas-header">

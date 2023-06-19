@@ -1,3 +1,4 @@
 @extends('layouts.sideNav')
-hi
 @section('content')
+
+@endsection
