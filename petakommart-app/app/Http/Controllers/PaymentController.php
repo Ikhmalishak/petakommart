@@ -80,7 +80,16 @@ class PaymentController extends Controller
     // return redirect()->route('payments.report', ['paymentID' => $receipt->id]);
     }
 
-    
+    public function generateReport()
+    {
+        $report = Payment::select(Payment::raw('DATE(created_at) as day'), DB::raw('SUM(total_amount) as total'))
+            ->groupBy('day')
+            ->orderBy('day', 'ASC')
+            ->get();
+
+        return view('payment.report', compact('report'));
+    }
+
     private function calculateTotalPurchase($cartItems)
     {
         $totalPurchase = 0;

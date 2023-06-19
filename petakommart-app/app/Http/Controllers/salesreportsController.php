@@ -54,5 +54,21 @@ class salesreportsController extends Controller
         return view('ManageSalesReport.ADMIN.UpdateSalesReportPage', ['data_report'=>$data_report]);
     }
 
-     
+     // public function update($id, Request $request)
+    // {
+    //     dd($sale);
+
+    // $sale = salesreports:: find($id);
+
+    // $sale->week = $request->input('week');
+    // $sale->monday = $request->input('monday');
+    // $sale->tuesday = $request->input('tuesday');
+    // $sale->wednesday = $request->input('wednesday');
+    // $sale->thursday = $request->input('thursday');
+    // $sale->friday = $request->input('friday');
+
+    // $sale->save();
+
+    // return redirect(route('ManageSalesReport.ADMIN.ViewSalesReportPage'));
+    // }
 }
