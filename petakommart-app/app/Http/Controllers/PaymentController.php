@@ -105,7 +105,8 @@ public function cash(Request $request)
     return view('managepayment.cash', compact('totalPurchase'));
 }
 >>>>>>> Stashed changes
-    private function calculateTotalPurchase($cartItems)
+   
+private function calculateTotalPurchase($cartItems)
     {
         $totalPurchase = 0;
 
