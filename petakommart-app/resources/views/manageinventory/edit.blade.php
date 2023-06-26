@@ -11,7 +11,7 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label for="productcode">Product COde</label>
+                                <label for="productcode">Product Code</label>
                                 <input id="productcode" type="text" class="form-control" name="productcode" value="{{ $item->productcode }}" required>
                             </div>
 
