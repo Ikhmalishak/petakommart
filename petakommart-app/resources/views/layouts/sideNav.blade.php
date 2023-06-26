@@ -32,7 +32,11 @@
             <div class="nav-wrapper">
                 <ul class="nav flex-column">
                     <li class="nav-item">
+<<<<<<< Updated upstream
                     <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+=======
+                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+>>>>>>> Stashed changes
                             <i class="material-icons">info</i>
                             <span>Dashboard</span>
                         </a>
@@ -41,7 +45,11 @@
                     <!-- GROUP SEP START -->
                     @if( auth()->user()->category== "Admin")
                     <li class="nav-item">
+<<<<<<< Updated upstream
                         <a class="nav-link {{ request()->routeIs('inventorys*') ? 'active' : '' }}" href="{{ route('inventorys') }}">
+=======
+                        <a class="nav-link {{ request()->routeIs('dashboard_aa') ? 'active' : '' }}" href="{{ route('dashboard_aa') }}">
+>>>>>>> Stashed changes
                             <i class="material-icons">checklist</i>
                             <span>Inventory</span>
                         </a>

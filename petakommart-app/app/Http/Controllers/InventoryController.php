@@ -27,7 +27,10 @@ class InventoryController extends Controller
     {
         //validate syarat untuk input macam ic kena masuk nombor
         $validator = Validator::make($request->all(), [
+<<<<<<< Updated upstream
             'productcode' => 'required',
+=======
+>>>>>>> Stashed changes
             'product_name' => 'required',
             'quantity' => 'required',
             'price' => 'required',
@@ -53,10 +56,16 @@ public function edit($id)
     return view('manageinventory.edit', compact('item'));
 }
 
+<<<<<<< Updated upstream
 public function update($id, request $request)
 {
     $validatedData = $request->validate([
         'productcode' => 'required',
+=======
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+>>>>>>> Stashed changes
         'product_name' => 'required',
         'quantity' => 'required',
         'price' => 'required',
@@ -97,5 +106,10 @@ public function update($id, request $request)
         Inventory::create($validatedData);
 
         return redirect()->back()->with('success', 'Inventory added successfully!');
+<<<<<<< Updated upstream
     }*/
 }
+=======
+    }*/
+}
+>>>>>>> Stashed changes

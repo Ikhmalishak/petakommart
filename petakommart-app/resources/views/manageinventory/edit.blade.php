@@ -4,6 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+<<<<<<< Updated upstream
                     <div class="card-header">Update Inventory</div>
 
                     <div class="card-body">
@@ -14,6 +15,13 @@
                                 <label for="productcode">Product Code</label>
                                 <input id="productcode" type="text" class="form-control" name="productcode" value="{{ $item->productcode }}" required>
                             </div>
+=======
+                    <div class="card-header">Add Inventory</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('inventorys.store') }}">
+                            @csrf
+>>>>>>> Stashed changes
 
                             <div class="form-group">
                                 <label for="product_name">Product Name</label>
@@ -25,6 +33,7 @@
                                 <input id="quantity" type="quantity" class="form-control" name="quantity" value="{{ $item->quantity }}" required>
                             </div>
                             <div class="form-group">
+<<<<<<< Updated upstream
                                 <label for="price">Price</label>
                                 <input id="price" type="price" class="form-control" name="price" value="{{ $item->price }}" required>
                             </div>
@@ -69,6 +78,22 @@
                                 });
                             </script>
 
+=======
+                                <label for="price">price</label>
+                                <input id="price" type="price" class="form-control" name="price" value="{{ $item->price }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">amount</label>
+                                <input id="amount" type="amount" class="form-control" name="amount" value="{{ $item->amount }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stock">Stock</label>
+                                <input id="stock" type="stock" class="form-control" name="stock" value="{{ $item->product_name }}" required>
+                            </div>
+
+                            <!-- Add more fields for profile attributes here -->
+
+>>>>>>> Stashed changes
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Update Inventory</button>
                             </div>
@@ -78,4 +103,8 @@
             </div>
         </div>
     </div>
+<<<<<<< Updated upstream
 @endsection
+=======
+@endsection
+>>>>>>> Stashed changes

@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+<<<<<<< Updated upstream
     function index()
     {
         $users = User::get(); //select * from user database
         return view(
             'manageuser.index',
+=======
+    function viewprofile()
+    {
+        $users = User::get(); //select * from user database
+        return view(
+            'manageuser.viewprofile',
+>>>>>>> Stashed changes
             compact('users')
         );
     }
@@ -27,22 +35,40 @@ class ProfileController extends Controller
     {
         //validate syarat untuk input macam ic kena masuk nombor
         $validator = Validator::make($request->all(), [
+<<<<<<< Updated upstream
             'name' => 'required',
             'email' => 'required',
             'password' =>'required',
             'category' => 'required',
             'gender' => 'required',
             'phoneNum' => 'required',
+=======
+            'cashierid' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'dob' => 'required|date',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^\+6\d{8,}$/',
+            'password' => 'required',
+>>>>>>> Stashed changes
         ]);
         //insert data to db
         User::create(
            $validator -> validate()
+<<<<<<< Updated upstream
+=======
+           /* //key guna nama dalam db -> $request->title (nama dalam form)
+            "title" => $request->title,
+            "description" => $request->description,
+            */
+>>>>>>> Stashed changes
         );
     
         // Redirect to the desired page
         return redirect()->route('users');
     }
 
+<<<<<<< Updated upstream
 
 public function edit($id)
 {
@@ -102,4 +128,57 @@ public function update(Request $request, $id)
         $item->delete();
         return redirect()->route('users');
     }
+=======
+public function edit($id)
+{
+    $id = User::find($id);
+    return view('manageuser.editprofile', compact('users'));
+}
+
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'cashierid' => 'required',
+        'name' => 'required',
+        'gender' => 'required',
+        'dob' => 'required|date',
+        'email' => 'required|email',
+        'phone' => 'required|regex:/^\+6\d{8,}$/',
+    ]);
+
+    $id = User::find($id);
+    $id->update($validatedData);
+
+    return redirect()->route('users')->with('success', 'Profile updated successfully');
+}
+    //process delete
+    function delete($id)
+    {
+        $id = User::find($id);
+        //insert data to database
+        $id->delete();
+        return redirect()->route('users');
+    }
+/*
+    public function addInventory()
+    {
+        return view('manageinventory.addinventory');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'product_name' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'amount' => 'required',
+            'stock' => 'required',
+            // Add validation rules for other profile attributes here
+        ]);
+
+        Inventory::create($validatedData);
+
+        return redirect()->back()->with('success', 'Inventory added successfully!');
+    }*/
+>>>>>>> Stashed changes
 }

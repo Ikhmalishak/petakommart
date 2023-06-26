@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 @extends('layouts.app')
 @section('content')
 <div class="container">
@@ -117,9 +118,86 @@
                             </div>
                         </div>
                     </form>
+=======
+@extends('layouts.sideNav')
+@section('content')
+
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Add Profile</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('createprofile') }}">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="ID">Student ID</label>
+                                <input id="cashierid" type="text" class="form-control" name="cashierid" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input id="name" type="text" class="form-control" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                                    <label class="form-check-label" for="male">Male</label>
+                                </div>
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                                    <label class="form-check-label" for="female">Female</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input id="dob" type="date" class="form-control" name="dob" required>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input id="email" type="email" class="form-control" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input id="phone" type="tel" class="form-control" name="phone" value="+6" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input id="password" type="password" class="form-control" name="password" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password_confirmation">Confirm Password</label>
+                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+
+                            <!-- Add more fields for profile attributes here -->
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Add Profile</button>
+                            </div>
+                        </form>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< Updated upstream
 </div>
 @endsection
+=======
+@endsection
+
+>>>>>>> Stashed changes

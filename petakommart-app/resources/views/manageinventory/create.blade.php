@@ -9,10 +9,13 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('inventorys.store') }}">
                             @csrf
+<<<<<<< Updated upstream
                             <div class="form-group">
                                 <label for="productcode">Product Code</label>
                                 <input id="productcode" type="text" class="form-control" name="productcode" required>
                             </div>
+=======
+>>>>>>> Stashed changes
 
                             <div class="form-group">
                                 <label for="product_name">Product Name</label>
@@ -24,6 +27,7 @@
                                 <input id="quantity" type="quantity" class="form-control" name="quantity" required>
                             </div>
                             <div class="form-group">
+<<<<<<< Updated upstream
                                 <label for="price">Price</label>
                                 <input id="price" type="price" class="form-control" name="price" required>
                             </div>
@@ -34,10 +38,23 @@
                             <div class="form-group">
                                 <label for="stock">Stock</label>
                                 <input id="stock" type="stock" class="form-control" name="stock" readonly required>
+=======
+                                <label for="price">price</label>
+                                <input id="price" type="price" class="form-control" name="price" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount">amount</label>
+                                <input id="amount" type="amount" class="form-control" name="amount" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="stock">Stock</label>
+                                <input id="stock" type="stock" class="form-control" name="stock" required>
+>>>>>>> Stashed changes
                             </div>
 
                             <!-- Add more fields for profile attributes here -->
 
+<<<<<<< Updated upstream
                             <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     const quantityInput = document.getElementById('quantity');
@@ -63,6 +80,8 @@
                                 });
                             </script>
 
+=======
+>>>>>>> Stashed changes
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Add Inventory</button>
                             </div>
@@ -72,4 +91,8 @@
             </div>
         </div>
     </div>
+<<<<<<< Updated upstream
 @endsection
+=======
+@endsection
+>>>>>>> Stashed changes

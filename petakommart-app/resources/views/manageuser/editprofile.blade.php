@@ -1,4 +1,5 @@
 @extends('layouts.sideNav')
+<<<<<<< Updated upstream
 
 @section('content')
 <div class="container">
@@ -96,11 +97,56 @@
                             </div>
                         </div>
                     </form>
+=======
+@section('content')
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edit User Profile</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('users.store') }}">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="ID">Student ID</label>
+                                <input id="cashierid" type="text" class="form-control" name="cashierid" value="{{ $cashierid->cashierid }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input id="name" type="name" class="form-control" name="name" value="{{ $cashierid->name }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input id="dob" type="dob" class="form-control" name="dob" value="{{ $cashierid->dob }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $cashierid->email }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input id="phone" type="phone" class="form-control" name="phone" value="{{ $cashierid->phone }}" required>
+                            </div>
+
+                            <!-- Add more fields for profile attributes here -->
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Update User</button>
+                            </div>
+                        </form>
+                    </div>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< Updated upstream
 </div>
 
 
+=======
+>>>>>>> Stashed changes
 @endsection
